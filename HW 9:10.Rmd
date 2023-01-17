@@ -21,5 +21,30 @@ library(tidyverse)
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
-  
+---
+3.3 exursize 
+---
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+---
+1.Because the code needs to look like this:
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+2. catercorgical is Model name, manufactuerer name, year of manufacturer, fuel type, and type of drive train, type of transmission. The continous vairables are number of cylinders, city miles per gallon, and highway miles per gallon
+---
+3.3 #3
+```{R}
+
+```
+
+---
+---
+3.5 exersize  
+---
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = drv, y = cyl))
+```
   
