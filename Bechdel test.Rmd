@@ -114,7 +114,7 @@ bechdel90_13 %>%
 Zooming in on the movies with `roi <400` provides a better view of how the medians across the categories compare:
 
 ```{r}
-#| warning: false
+#| warning: false #
 
 ggplot(data = bechdel90_13, mapping = aes(x = clean_test, y = roi, color = binary)) +
   geom_boxplot() +
