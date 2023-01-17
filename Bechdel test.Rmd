@@ -29,7 +29,7 @@ bechdel90_13 <- bechdel %>%
   filter(between(year, 1990, 2013))
 ```
 
-There are `___` such movies.
+There are `1,615` such movies.
 
 The financial variables we'll focus on are the following:
 
@@ -111,7 +111,7 @@ bechdel90_13 %>%
   select(title, budget_2013, domgross_2013, year)
 ```
 
-Zooming in on the movies with `roi < ___` provides a better view of how the medians across the categories compare:
+Zooming in on the movies with `roi <400` provides a better view of how the medians across the categories compare:
 
 ```{r}
 #| warning: false

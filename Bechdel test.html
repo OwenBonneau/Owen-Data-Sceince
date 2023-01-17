@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bechdel90_13 <span class="ot">&lt;-</span> bechdel <span class="sc">%&gt;%</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(year, <span class="dv">1990</span>, <span class="dv">2013</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There are <code>___</code> such movies.</p>
+<p>There are <code>1,615</code> such movies.</p>
 <p>The financial variables we’ll focus on are the following:</p>
 <ul>
 <li><code>budget_2013</code>: Budget in 2013 inflation adjusted dollars</li>
@@ -250,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3 El Mariachi                   11622       3388636  1992</code></pre>
 </div>
 </div>
-<p>Zooming in on the movies with <code>roi &lt; ___</code> provides a better view of how the medians across the categories compare:</p>
+<p>Zooming in on the movies with <code>roi &lt;400</code> provides a better view of how the medians across the categories compare:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bechdel90_13, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> clean_test, <span class="at">y =</span> roi, <span class="at">color =</span> binary)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
