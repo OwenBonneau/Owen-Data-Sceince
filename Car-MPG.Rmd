@@ -96,4 +96,19 @@ ggplot(data = mpg) +
 6.If you have a vairbale that has HWY being very drastic you would want to be able to better see the diffrence because it gives them more room on the y axis. 
 
 
+###3.6 exursize 
+1.line chart: C+Geom_freqpoly(), BoxPlot:  F+Geom_boxplot(),  Histogram: c+geom_histogram()
+
+2. it is going to be a point chart with a smooth line over it, and the drv color will make diffrent color dots and 3 smooth lines. 
+
+```{r 3.6.2}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+3.Show legend = false gets rid of the grey outline around the smooth lines, and the grey part is there too show that there is a range of possible points around the smoothed line.
+
+
+
+
   
