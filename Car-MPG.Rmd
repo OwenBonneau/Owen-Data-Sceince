@@ -2,78 +2,101 @@
 title: "HW for tuesday 9/10"
 output: html_document
 date: "2023-01-12"
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
+
 ```{r}
 library(openintro)
 library(tidyverse)
 library(ggplot2)
 ```
 
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
-#> ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-#> ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-#> ✔ readr   2.1.3      ✔ forcats 0.5.2 
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
+#\> ── Attaching packages ───────────────────────────────────────
+tidyverse 1.3.2 ── #\> ✔ ggplot2 3.4.0 ✔ purrr 0.3.5 #\> ✔ tibble 3.1.8
+✔ dplyr 1.0.10 #\> ✔ tidyr 1.2.1 ✔ stringr 1.4.1 #\> ✔ readr 2.1.3 ✔
+forcats 0.5.2 #\> ── Conflicts
+────────────────────────────────────────── tidyverse_conflicts() ── #\>
+✖ dplyr::filter() masks stats::filter() #\> ✖ dplyr::lag() masks
+stats::lag()
 
 ```{r }
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-###3.3 exursize 
+###3.3 exursize
 
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
 ```
 
-1.Because the code needs to look like this:
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+1.Because the code needs to look like this: ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 
-2. catercorgical is Model name, manufactuerer name, year of manufacturer, fuel type, and type of drive train, type of transmission. The continous vairables are number of cylinders, city miles per gallon, and highway miles per gallon
-
+2.  categorical is Model name, manufacturer name, year of manufacturer,
+    fuel type, and type of drive train, type of transmission. The
+    continuous variables are number of cylinders, city miles per gallon,
+    and highway miles per gallon
 
 ```{r 3.3.3}
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy,color= cty, size=fl ))
 ```
 
-You cant put a continuous variable in shape, but size works with continous.
+You cant put a continuous variable in shape, but size works with
+continuous.
+
 ```{R}
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy,color= hwy))
 ```
-4.if you use the same variable for two athestics it will do both, in the example above hwy is both y and color cause it to be darker with less hwy. The color doesn't add any more information but rather looks cool. 
+
+4.if you use the same variable for two aesthetics it will do both, in
+the example above hwy is both y and color cause it to be darker with
+less hwy. The color doesn't add any more information but rather looks
+cool.
+
 ```{r 3.3.5}
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy,size= cty, stroke=2), color="blue",shape=2)
 ```
-5. Stroke controls the size of the outline
+
+5.  Stroke controls the size of the outline
+
 ```{r 3.3.6}
 ggplot(data = mpg) +  
   geom_point(mapping = aes(x = displ, y = hwy,size= cty, color=displ < 5), shape=2)
 ```
-6. it make the point that has displ less than 5 a diffrent color, with the color answering the question of what points have displ <5 
 
-###3.5 exersize  
+6.  it make the point that has displ less than 5 a different color, with
+    the color answering the question of what points have displ \<5
 
-```{r3.5.1}
+###3.5 extrusize
+
+``` {r3.5.1}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = drv, y = hwy))
 facet_grid(drv ~ cyl)
 ```
-1. it puts all the dots on one line, shows the highway speed for 4 wheel drive, front wheel, and rear wheel. this data would be good to findout what wheel drive is the fastest. 
+
+1.  it puts all the dots on one line, shows the highway speed for 4
+    wheel drive, front wheel, and rear wheel. this data would be good to
+    find out what wheel drive is the fastest.
 
 ```{r 3.5.2}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = drv, y = cyl))
 ```
-  2. this tells you how many cylinders each wheel drive could have, it has useful data that says 4 wheel and rear wheel engines cant have certain cylinder engines while front wheel has more diversity in cylinder numbers 
-```{r 3.5.3}  
+
+2.  this tells you how many cylinders each wheel drive could have, it
+    has useful data that says 4 wheel and rear wheel engines cant have
+    certain cylinder engines while front wheel has more diversity in
+    cylinder numbers
+
+```{r 3.5.3}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) +
   facet_grid(drv ~ .)
@@ -82,33 +105,53 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
   facet_grid(. ~ cyl)
 ```
-  3. it makes seprate graphs for each drivertrain so you can just comapare within drivetrain.
-  
+
+3.  it makes separate graphs for each driver train so you can just
+    compare within drive train.
+
 ```{r 3.5.4}
   ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ class, nrow = 4)
 ```
-4.it is easier to compare categorical variables like car type or drive train, but its harder to compare across section since they all have there own graph.
 
-5. Nrow is number of rows 
+4.it is easier to compare categorical variables like car type or drive
+train, but its harder to compare across section since they all have
+there own graph.
 
-6.If you have a vairbale that has HWY being very drastic you would want to be able to better see the diffrence because it gives them more room on the y axis. 
+5.  Nrow is number of rows
 
+6.If you have a vairibale that has HWY being very drastic you would want
+to be able to better see the difference because it gives them more room
+on the y axis.
 
-###3.6 exursize 
-1.line chart: C+Geom_freqpoly(), BoxPlot:  F+Geom_boxplot(),  Histogram: c+geom_histogram()
+###3.6 exursize
 
-2. it is going to be a point chart with a smooth line over it, and the drv color will make diffrent color dots and 3 smooth lines. 
+1.line chart: C+Geom_freqpoly(), BoxPlot: F+Geom_boxplot(), Histogram:
+c+geom_histogram()
+
+2.  it is going to be a point chart with a smooth line over it, and the
+    drv color will make different color dots and 3 smooth lines.
 
 ```{r 3.6.2}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
   geom_point() + 
   geom_smooth(se = FALSE)
 ```
-3.Show legend = false gets rid of the grey outline around the smooth lines, and the grey part is there too show that there is a range of possible points around the smoothed line.
 
+3.Show legend = false gets rid of the grey outline around the smooth
+lines, and the grey part is there too show that there is a range of
+possible points around the smoothed line.
 
+4. SE means show legend, so if it is false then it say don't show legend
 
+```{r 3.6.5}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
 
-  
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+```
+
