@@ -13,21 +13,23 @@ library(dsbox)
 ```
 
 ## Exercises
-
+` 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+13245 rows 
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
+each row is a different airbnb listing, or property. 
 
 ### Exercise 3
+I wanted it to the rows to have the same number of graphs so nrow had to be 1,2,7,or 14, and 2 lookjed the lease weird. 
 
-Remove this text, and add your answer for Exercise 3 here.
 
 ```{r prices-neighbourhoods}
-# remove this comment and add the code for Exercise 3 here
+ggplot(data = edibnb, mapping = aes(x = price)) +
+  geom_histogram(binwidth = 4) +
+  facet_wrap(~neighbourhood, nrow=2)
 ```
 
 ### Exercise 4
