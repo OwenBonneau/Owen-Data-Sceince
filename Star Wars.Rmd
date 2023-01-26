@@ -27,7 +27,7 @@ glimpse(starwars)
 
 ggplot(starwars, 
        aes(x = height, y = mass, color = gender, size = birth_year)) +
-  geom_point(color = "pink")
+  geom_point(color = 'pink')
 ```
 
 3.  Add labels for title, x and y axes, and size of points. Uncomment to see the effect.
@@ -39,10 +39,10 @@ ggplot(starwars,
        aes(x = height, y = mass, color = gender, size = birth_year)) +
   geom_point(color = "#30509C") +
   labs(
-    #title = "___",
-    #x = "___", 
-    #y = "___",
-    #___
+    #title = "starwars",
+    #x = "height", 
+    #y = "mass",
+    # birth_year
     )
 ```
 
@@ -52,16 +52,18 @@ ggplot(starwars,
 
 ```{r}
 #| label: histogram
-#| eval: false
+#| eval: true
 
-ggplot(starwars, aes(___)) +
-  geom___
+ggplot(starwars, aes(x= birth_year)) +
+  geom_histogram(binwidth = 5 )
 ```
 
 5.  Pick a numerical variable and a categorical variable and make a visualization (you pick the type!) to visualization the relationship between the two variables. Along with your code and output, provide an interpretation of the visualization.
 
 ```{r}
 #| label: num-cat
+ggplot(starwars, aes(x=skin_color,y=mass))+
+geom_point() 
 
 ```
 
@@ -71,13 +73,16 @@ Interpretation goes here...
 
 ```{r}
 #| label: barplot
-
+ggplot(starwars) +
+geom_bar(aes(hair_color))
 ```
 
 7.  Pick two categorical variables and make a visualization to visualize the relationship between the two variables. Along with your code and output, provide an interpretation of the visualization.
 
 ```{r}
 #| label: cat-cat
+ggplot(starwars, aes(x=gender, y=hair_color))+
+  geom_point()
 
 ```
 
