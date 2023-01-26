@@ -37,7 +37,7 @@ ggplot(data = edibnb, mapping = aes(x = price)) +
 Remove this text, and add your answer for Exercise 4 here.
 
 ```{r top-5-median}
-# remove this comment and add the code for Exercise 4 here
+median(neighborhood, na.rm = FALSE )
 ```
 
 ```{r top-5-median-plot}
