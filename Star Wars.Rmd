@@ -10,6 +10,7 @@ editor: visual
 #| include: false
 
 library(tidyverse)
+library(ggplot2)
 ```
 
 1.  Glimpse at the starwars data frame.
@@ -86,7 +87,7 @@ ggplot(starwars, aes(x=gender, y=hair_color))+
 
 ```
 
-Interpretation goes here...
+only masculine people have blond hair, and only feminine have auburn but aurburn grey is only in masculine people.  
 
 8.  Pick two numerical variables and two categorical variables and make a visualization that incorporates all of them and provide an interpretation with your answer.
 
@@ -94,7 +95,9 @@ Interpretation goes here...
 
 ```{r}
 #| label: multi
+ggplot(starwars, aes(x=height, y= birth_year, shape=gender, color=sex))+
+  geom_point()
 
 ```
 
-Interpretation goes here...
+the shortest is the oldest, there is no correlation between age and height, it does seem all female sex and feminine gender are around the same age and height. there is a clear average age and height that majority of character fall into: birth year (0-125) and height (150-200)
