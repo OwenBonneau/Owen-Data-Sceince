@@ -87,7 +87,7 @@ ggplot(starwars, aes(x=gender, y=hair_color))+
 
 ```
 
-only masculine people have blond hair, and only feminine have auburn but aurburn grey is only in masculine people.  
+only masculine people have blond hair, and only feminine have auburn but aurburn grey is only in masculine people.
 
 8.  Pick two numerical variables and two categorical variables and make a visualization that incorporates all of them and provide an interpretation with your answer.
 
