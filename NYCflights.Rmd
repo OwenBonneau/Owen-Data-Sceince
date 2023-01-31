@@ -1,0 +1,42 @@
+
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+```
+```{r}
+filter(flights, month==1, day==1) %>%
+  arrange( desc(air_time))
+```
+##
+```{r}
+filter(flights, dep_delay > 60)
+
+```
+
+```{r}
+filter(flights, dest == "HOU"| dest == "IAH")
+```
+
+```{r}
+filter(flights, carrier %in% c("AA","UA","DL"))
+```
+
+```{r}
+filter(flights, month %in% c(7,8,9))
+```
+
+```{r}
+filter(flights,dep_delay >= 60 & arr_delay <= (dep_delay - 30))
+```
+
+```{r}
+filter( flights, between(dep_time,0,600))
+```
+
+```{r}
+filter(flights, is.na(dep_time))
+```
+
+other values are NA because if they never took off they cant have a airtime, delays, or etc
+
