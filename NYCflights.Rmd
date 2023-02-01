@@ -42,7 +42,6 @@ other values are NA because if they never took off they cant have a airtime, del
 ##exurzise 5.3.1
 ```{r 5.3.1 }
 arrange(flights, desc(is.na(air_time)))
-
 arrange(flights,desc(arr_delay))
 arrange(flights,time_hour)
 arrange(flights,distance)
