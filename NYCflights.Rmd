@@ -1,12 +1,10 @@
-
-
 ```{r}
 library(nycflights13)
 library(tidyverse)
 ```
 
-
 ##exursize 5.2.4
+
 ```{r}
 filter(flights, dep_delay > 60)
 
@@ -38,12 +36,42 @@ filter(flights, is.na(dep_time))
 
 other values are NA because if they never took off they cant have a airtime, delays, or etc
 
-
 ##exurzise 5.3.1
+
 ```{r 5.3.1 }
 arrange(flights, desc(is.na(air_time)))
 arrange(flights,desc(arr_delay))
 arrange(flights,time_hour)
 arrange(flights,distance)
 arrange(flights,desc(distance))
+```
+
+###Exursise 3.4.1
+
+```{r 3.4.1.2}
+select(flights, arr_delay,dep_time)
+
+
+```
+```{r}
+vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+select(flights,any_of(vars))
+```
+```{r 3.4.1.3}
+select(flights, contains("TIME"))
+```
+
+###exursize 3.5.1
+
+```{r}
+b_time <- select(flights,dep_time,sched_dep_time)
+
+transmute(b_time,
+  dhour = dep_time %/% 100,
+ dminute = dep_time %% 100,
+  mdep_time= (dhour * 60) + dminute,
+ sdhour = sched_dep_time %/% 100,
+ sdminute = sched_dep_time %% 100,
+  msdep_time= (sdhour * 60) + sdminute)
+
 ```
