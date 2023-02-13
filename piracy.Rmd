@@ -1,0 +1,24 @@
+```{r}
+library(openintro)
+library(tidyverse)
+```
+
+```{r}
+view(piracy)
+```
+
+```{r}
+money_power <- transmute(piracy,
+          party = party,
+          more_pro_money = money_pro - money_con,
+          stance = stance) 
+```
+
+```{r}
+ggplot(money_power, mapping = aes(party,more_pro_money, colour = stance)) +
+  geom_boxplot()+
+  facet_grid(. ~ stance)
+
+```
+##Analyst
+This graph shows that the top 5 individuals that where given more pro money than con money was almost exclusively Democrats.The individual that received the most money in comparison to con money was a democrat, its also interesting that person that received the most pro money over con voted no.   
