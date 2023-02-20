@@ -1,0 +1,45 @@
+```{r}
+library(tidyverse)
+
+plastic_waste <- read_csv("plastic-waste.csv")
+```
+
+```{r exercise}
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+```
+
+```{r exercise plastic waste by continent}
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2) +
+  facet_grid(vars(continent))
+```
+
+```{r question 1density}
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent)) +
+  geom_density()
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density()
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.4)
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent,alpha = 0.5)) +
+ geom_density()
+
+```
+
+Density question 2. you put the alpha into the geom code because if youy where too put it into the aes section it would come up on the side of the graph saying "alpha (opacity level)". You can see that happen in the last density plot. You should put always put constants out side the aes, because then you wont be cluttered with useless info  
