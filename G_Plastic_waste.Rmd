@@ -43,3 +43,10 @@ ggplot(data = plastic_waste,
 ```
 
 Density question 2. you put the alpha into the geom code because if youy where too put it into the aes section it would come up on the side of the graph saying "alpha (opacity level)". You can see that happen in the last density plot. You should put always put constants out side the aes, because then you wont be cluttered with useless info  
+
+```{r boxplot}
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_boxplot()
+```
