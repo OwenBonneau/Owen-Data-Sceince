@@ -92,4 +92,20 @@ ggplot(data = no_out_lier,
   geom_point()
 ```
 
-countries that have more coastal and total population have less plastic per cap, this graph is a bit skewed by outlier more in total pop than coastal pop, so I would say that the trend is more apparent in the coastal than total pop.    
+countries that have more coastal and total population have less plastic per cap, this graph is a bit skewed by outlier more in total pop than coastal pop, so I would say that the trend is more apparent in the coastal than total pop. 
+
+```{r recreate }
+ggplot()+
+  geom_point(data = no_out_lier,
+       mapping = aes( x = (coastal_pop/total_pop),
+                      y = plastic_waste_per_cap, color = continent)) +
+  geom_smooth(data = no_out_lier,
+       mapping = aes( x = (coastal_pop/total_pop),
+                      y = plastic_waste_per_cap,color = ))
+
+```
+```{r do some countries have more coastal than total}
+filter(no_out_lier, c(coastal_pop > total_pop))
+```
+
+This data makes no sense. How can a country have more people living on the coast than total population. This would be like me saying there are more seniors than the total population of the school. Because I now realize how shit this data is, I have no reason to trust it. 
