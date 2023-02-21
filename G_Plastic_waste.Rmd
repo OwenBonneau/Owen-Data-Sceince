@@ -49,4 +49,47 @@ ggplot(data = plastic_waste,
        mapping = aes(x = continent, 
                      y = plastic_waste_per_cap)) +
   geom_boxplot()
+
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()
+
 ```
+
+the box plot shows the outliers better than the violin. while the violin is better at showing where the majority sits, in the box plot its a black line that is kinda hard to see. in general the violin looks better and is easier to read.
+
+```{r scatter plot 1}
+no_out_lier<- filter(plastic_waste, c(plastic_waste_per_cap < 3))
+ggplot(data = no_out_lier,
+       mapping = aes( x = plastic_waste_per_cap,
+                      y = mismanaged_plastic_waste_per_cap))+
+  geom_point()
+```
+
+I filtered to remove the outlier to better see the trend. there is a trend of more mismanaged per cap results in more plastic waste per cap. there is a lot a trend of a lot of plastic waste with little of it being mismanaged. There is no clear results besides that countries that dont have a lot of plastic waste don't mismanage it.
+
+```{r scatter 2}
+no_out_lier<- filter(plastic_waste, c(plastic_waste_per_cap < 3))
+ggplot(data = no_out_lier,
+       mapping = aes( x = plastic_waste_per_cap,
+                      y = mismanaged_plastic_waste_per_cap, color = continent))+
+  geom_point()
+```
+
+north america has the most outliers, Africa follow the linear trend of more mismanagement = more plastic. Europe mismanages the lease. Asia has the most extremes [besides Trinidad that was filtered out of data for graph]. south america has little mismanagement besides one country. Oceania in general follows mismanagement = more plastic. 
+
+```{r scatterplot 3}
+
+ggplot(data = no_out_lier,
+       mapping = aes( x = plastic_waste_per_cap,
+                      y = total_pop, color = continent))+
+  geom_point()
+
+ggplot(data = no_out_lier,
+       mapping = aes( x = plastic_waste_per_cap,
+                      y = coastal_pop, color = continent))+
+  geom_point()
+```
+
+countries that have more coastal and total population have less plastic per cap, this graph is a bit skewed by outlier more in total pop than coastal pop, so I would say that the trend is more apparent in the coastal than total pop.    
