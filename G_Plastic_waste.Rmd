@@ -42,7 +42,7 @@ ggplot(data = plastic_waste,
 
 ```
 
-Density question 2. you put the alpha into the geom code because if youy where too put it into the aes section it would come up on the side of the graph saying "alpha (opacity level)". You can see that happen in the last density plot. You should put always put constants out side the aes, because then you wont be cluttered with useless info  
+Density question 2. you put the alpha into the geom code because if youy where too put it into the aes section it would come up on the side of the graph saying "alpha (opacity level)". You can see that happen in the last density plot. You should put always put constants out side the aes, because then you wont be cluttered with useless info
 
 ```{r boxplot}
 ggplot(data = plastic_waste, 
@@ -67,7 +67,7 @@ ggplot(data = no_out_lier,
   geom_point()
 ```
 
-I filtered to remove the outlier to better see the trend. there is a trend of more mismanaged per cap results in more plastic waste per cap. there is a lot a trend of a lot of plastic waste with little of it being mismanaged. There is no clear results besides that countries that dont have a lot of plastic waste don't mismanage it.
+I filtered to remove the outlier to better see the trend. there is a trend of more mismanaged per cap results in more plastic waste per cap. there is also a trend of a lot of plastic waste with little of it being mismanaged. There is no clear results besides that countries that dont have a lot of plastic waste don't mismanage it.
 
 ```{r scatter 2}
 no_out_lier<- filter(plastic_waste, c(plastic_waste_per_cap < 3))
@@ -77,7 +77,7 @@ ggplot(data = no_out_lier,
   geom_point()
 ```
 
-north america has the most outliers, Africa follow the linear trend of more mismanagement = more plastic. Europe mismanages the lease. Asia has the most extremes [besides Trinidad that was filtered out of data for graph]. south america has little mismanagement besides one country. Oceania in general follows mismanagement = more plastic. 
+north america has the most outliers, Africa follow the linear trend of more mismanagement = more plastic. Europe mismanages the lease. Asia has the most extremes [besides Trinidad that was filtered out of data for graph]. south america has little mismanagement besides one country. Oceania in general follows mismanagement = more plastic.
 
 ```{r scatterplot 3}
 
@@ -92,7 +92,7 @@ ggplot(data = no_out_lier,
   geom_point()
 ```
 
-countries that have more coastal and total population have less plastic per cap, this graph is a bit skewed by outlier more in total pop than coastal pop, so I would say that the trend is more apparent in the coastal than total pop. 
+countries that have more coastal and total population have less plastic per cap, this graph is a bit skewed by outlier more in total pop than coastal pop, so I would say that the trend is more apparent in the coastal than total pop.
 
 ```{r recreate }
 ggplot()+
@@ -104,8 +104,14 @@ ggplot()+
                       y = plastic_waste_per_cap,color = ))
 
 ```
+
 ```{r do some countries have more coastal than total}
-filter(no_out_lier, c(coastal_pop > total_pop))
+coastal_total<-filter(no_out_lier, c(coastal_pop > total_pop))
+transmute(coastal_total, ratio_CT = (coastal_pop/total_pop), 
+          total = total_pop,
+          coastal = coastal_pop,
+          country = entity) %>%
+  arrange(desc(ratio_CT))
 ```
 
-This data makes no sense. How can a country have more people living on the coast than total population. This would be like me saying there are more seniors than the total population of the school. Because I now realize how shit this data is, I have no reason to trust it. 
+This data makes no sense. How can a country have more people living on the coast than total population. This would be like me saying there are more seniors than the total population of the school. Because I now realize how shit this data is, I have no reason to trust it.
