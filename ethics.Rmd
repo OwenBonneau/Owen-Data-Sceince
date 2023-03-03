@@ -45,7 +45,7 @@ better <- tribble (
 
 ```{r better graph}
 
-ggplot(better,) +
+ggplot(better) +
   geom_point(aes(date,count_m), color="blue") +
   geom_point(mapping=aes(x=date,y=count_nm), color="red") + 
   ylim(0,30)
