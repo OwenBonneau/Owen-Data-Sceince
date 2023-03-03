@@ -1,0 +1,59 @@
+---
+title: "Lab 09 - Conveying the right message through visualisation"
+author: "Insert your name here"
+date: "Insert date here"
+output: github_document
+---
+
+### Load packages and data
+
+```{r load-packages, message=FALSE}
+library(tidyverse) 
+```
+
+### Exercise 1
+```{r}
+better <- tribble (
+  ~date, ~count_m,~count_nm,
+  "7/12",26,20,
+  "7/13",19.5,20,
+  "7/14",19.45,20.5,
+  "7/15", 20,20.75,
+  "7/16",19.5,21,
+  "7/17",19.5,20.5,
+  "7/18",20.5,20.5,
+  "7/19",20,20.25,
+  "7/20",20.75,19.5,
+  "7/21",21.25,19.5,
+  "7/22",19.75,19.7,
+  "7/23",20,19.5,
+  "7/24",20.5,20.9,
+  "7/25",19,20.95,
+  "7/26",19.75,21,
+  "7/27",17,20.5,
+  "7/28",16.25,20.5,
+  "7/29",16.5,20.6,
+  "7/30",16.55,21,
+  "7/31",15.88,19.85,
+  "8/1",16,20,
+  "8/2",15.75,19.9,
+  "8/3",16,20.25,
+
+)
+```
+
+
+```{r better graph}
+
+ggplot(better,) +
+  geom_point(aes(date,count_m), color="blue") +
+  geom_point(mapping=aes(x=date,y=count_nm), color="red") + 
+  ylim(0,30)
+
+```
+
+### Exercise 2
+
+...
+
+Add exercise headings as needed.
